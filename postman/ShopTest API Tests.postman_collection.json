@@ -1,0 +1,169 @@
+{
+  "info": {
+    "_postman_id": "7e993a90-d793-49fb-90ab-5b2ba2cbf012",
+    "name": "ShopTest API Tests",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "54575787",
+    "_collection_link": "https://go.postman.co/collection/54575787-7e993a90-d793-49fb-90ab-5b2ba2cbf012?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "New Request",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", () => {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Response is valid JSON\", () => {\r\n    pm.response.to.be.json;\r\n});\r\n\r\npm.test(\"Products response is an array\", () => {\r\n    const products = pm.response.json();\r\n    pm.expect(products).to.be.an(\"array\");\r\n});\r\n\r\npm.test(\"Products contain required fields\", () => {\r\n    const products = pm.response.json();\r\n\r\n    if (products.length > 0) {\r\n        pm.expect(products[0]).to.have.property(\"id\");\r\n        pm.expect(products[0]).to.have.property(\"title\");\r\n        pm.expect(products[0]).to.have.property(\"price\");\r\n    }\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://fakestoreapi.com/products",
+          "protocol": "https",
+          "host": [
+            "fakestoreapi",
+            "com"
+          ],
+          "path": [
+            "products"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "API-001 - Get All Products",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", () => {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Response is valid JSON\", () => {\r\n    pm.response.to.be.json;\r\n});\r\n\r\npm.test(\"Products response is an array\", () => {\r\n    const products = pm.response.json();\r\n    pm.expect(products).to.be.an(\"array\");\r\n});\r\n\r\npm.test(\"Products contain required fields\", () => {\r\n    const products = pm.response.json();\r\n\r\n    if (products.length > 0) {\r\n        pm.expect(products[0]).to.have.property(\"id\");\r\n        pm.expect(products[0]).to.have.property(\"title\");\r\n        pm.expect(products[0]).to.have.property(\"price\");\r\n    }\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://fakestoreapi.com/products",
+          "protocol": "https",
+          "host": [
+            "fakestoreapi",
+            "com"
+          ],
+          "path": [
+            "products"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "API-002 — Get Single Product",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", () => {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Product fields have correct types\", () => {\r\n    const product = pm.response.json();\r\n\r\n    pm.expect(product.id).to.be.a(\"number\");\r\n    pm.expect(product.title).to.be.a(\"string\");\r\n    pm.expect(product.price).to.be.a(\"number\");\r\n    pm.expect(product.price).to.be.at.least(0);\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://fakestoreapi.com/products/1",
+          "protocol": "https",
+          "host": [
+            "fakestoreapi",
+            "com"
+          ],
+          "path": [
+            "products",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "API-003 — Get Categories",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", () => {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Response is valid JSON\", () => {\r\n    pm.response.to.be.json;\r\n});\r\n\r\npm.test(\"Products response is an array\", () => {\r\n    const products = pm.response.json();\r\n    pm.expect(products).to.be.an(\"array\");\r\n});\r\n\r\npm.test(\"Products contain required fields\", () => {\r\n    const products = pm.response.json();\r\n\r\n    if (products.length > 0) {\r\n        pm.expect(products[0]).to.have.property(\"id\");\r\n        pm.expect(products[0]).to.have.property(\"title\");\r\n        pm.expect(products[0]).to.have.property(\"price\");\r\n    }\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://fakestoreapi.com/products/categories",
+          "protocol": "https",
+          "host": [
+            "fakestoreapi",
+            "com"
+          ],
+          "path": [
+            "products",
+            "categories"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "API-004 — Limit Products",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", () => {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Response contains at most five products\", () => {\r\n    const products = pm.response.json();\r\n\r\n    pm.expect(products).to.be.an(\"array\");\r\n    pm.expect(products.length).to.be.at.most(5);\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://fakestoreapi.com/products?limit=5",
+          "protocol": "https",
+          "host": [
+            "fakestoreapi",
+            "com"
+          ],
+          "path": [
+            "products"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": "5"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
